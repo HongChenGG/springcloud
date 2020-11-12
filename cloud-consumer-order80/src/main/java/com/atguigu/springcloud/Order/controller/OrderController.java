@@ -23,6 +23,7 @@ public class OrderController {
     private RestTemplate restTemplate;
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment){
+        System.out.println("test测试测试");
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
     }
     @GetMapping("/consumer/payment/get/{id}")
