@@ -2,7 +2,7 @@ server:
   port: 8002
 spring:
   application:
-    name: cloud-payment-service8002
+    name: cloud-payment-service
   datasource:
     # 当前数据源操作类型
     type: com.alibaba.druid.pool.DruidDataSource
