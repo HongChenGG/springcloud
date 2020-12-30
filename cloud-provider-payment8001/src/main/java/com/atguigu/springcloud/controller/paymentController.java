@@ -1,5 +1,6 @@
 package com.atguigu.springcloud.controller;
 
+import ch.qos.logback.core.util.TimeUtil;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author HongChen
@@ -41,6 +43,15 @@ public class paymentController {
         else{
             return new CommonResult(444,"没有对应记录，查询ID:"+id,null);
         }
+    }
+    @GetMapping(value = "/payment/feign/timeout")
+    public String  paymentFeignTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 
 }
